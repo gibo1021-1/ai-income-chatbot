@@ -51,7 +51,9 @@ for (const outcome of ["success", "error", "silence"])
     await page.getByLabel("연락처", { exact: false }).fill("010-0000-0000");
     await page.getByRole("button", { name: "상담하기", exact: true }).click();
     expect(sent).toBeUndefined(); // Unchecked required consent blocks the POST.
-    await page.getByRole("checkbox").check();
+    await page
+      .getByRole("checkbox", { name: "전화 상담을 위한", exact: false })
+      .check();
     await page.getByRole("button", { name: "상담하기", exact: true }).click();
     if (outcome === "silence") {
       await expect.poll(() => Boolean(sent)).toBe(true);
@@ -91,6 +93,8 @@ for (const outcome of ["success", "error", "silence"])
     expect(sent!.get("type")).toBe("0");
     expect(sent!.get("consent")).toBe("true");
     expect(sent!.get("name")).toBe("테스트");
+    expect(sent!.get("email")).toBeNull();
+    expect(sent!.get("newsletterConsent")).toBeNull();
     await page.evaluate(() =>
       window.dispatchEvent(
         new MessageEvent("message", {
@@ -108,3 +112,41 @@ for (const outcome of ["success", "error", "silence"])
         page.getByRole("heading", { name: "상담 신청이 접수되었습니다" }),
       ).toHaveCount(0);
   });
+
+test("뉴스레터 선택 동의 시에만 이메일을 전송한다", async ({ page }) => {
+  test.skip(!configured, "저장 연결 모의 테스트용 설정 필요");
+  let sent: URLSearchParams | undefined;
+  await page.route(
+    "https://script.google.com/macros/s/test/exec",
+    async (route) => {
+      sent = new URLSearchParams(route.request().postData() || "");
+      await route.fulfill({
+        contentType: "text/html",
+        body: `<script>window.top.postMessage(${JSON.stringify({ source: "ai-next-consultation", requestId: sent.get("requestId"), status: "success" })},'http://127.0.0.1:3000');</script>`,
+      });
+    },
+  );
+  await result(page);
+  await page.getByLabel("이름", { exact: false }).fill("테스트");
+  await page.getByLabel("연락처", { exact: false }).fill("010-0000-0000");
+  await expect(page.locator("#lead-email")).toBeDisabled();
+  await expect(
+    page.getByRole("checkbox", { name: "이메일 뉴스레터", exact: false }),
+  ).not.toBeChecked();
+  await page
+    .getByRole("checkbox", { name: "전화 상담을 위한", exact: false })
+    .check();
+  await page
+    .getByRole("checkbox", { name: "이메일 뉴스레터", exact: false })
+    .check();
+  await page.getByRole("button", { name: "상담하기", exact: true }).click();
+  expect(sent).toBeUndefined();
+  await page.locator("#lead-email").fill("reader@example.com");
+  await page.getByRole("button", { name: "상담하기", exact: true }).click();
+  await expect(
+    page.getByRole("heading", { name: "상담 신청이 접수되었습니다" }),
+  ).toBeVisible();
+  expect(sent!.get("email")).toBe("reader@example.com");
+  expect(sent!.get("newsletterConsent")).toBe("true");
+  expect(sent!.get("newsletterText")).toContain("이메일 뉴스레터 발송");
+});

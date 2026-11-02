@@ -5,6 +5,8 @@ import {
   CONSENT_VERSION,
   consultationEndpoint,
   consentText,
+  newsletterText,
+  validNewsletter,
   trustedCollectorOrigin,
   validLead,
 } from "../lib/consultation";
@@ -14,6 +16,7 @@ export default function ConsultationForm({ type }: { type: number }) {
   const [status, setStatus] = useState<
     "idle" | "pending" | "success" | "error"
   >("idle");
+  const [newsletter, setNewsletter] = useState(false);
   const [error, setError] = useState("");
   const form = useRef<HTMLFormElement>(null);
   const requestId = useRef("");
@@ -89,17 +92,23 @@ export default function ConsultationForm({ type }: { type: number }) {
           const values = new FormData(element);
           const name = String(values.get("name") || "").trim();
           const phone = String(values.get("phone") || "").replace(/[\s-]/g, "");
-          const validation = validLead(
-            name,
-            phone,
-            values.get("consent") === "true",
-          );
+          const email = String(values.get("email") || "").trim();
+          const subscribed = values.get("newsletterConsent") === "true";
+          const validation =
+            validLead(name, phone, values.get("consent") === "true") ||
+            validNewsletter(email, subscribed);
           if (validation) {
             setError(validation);
             setStatus("error");
             return;
           }
-          const fingerprint = JSON.stringify([name, phone, type]);
+          const fingerprint = JSON.stringify([
+            name,
+            phone,
+            type,
+            subscribed,
+            subscribed ? email : "",
+          ]);
           if (submittedDetails.current !== fingerprint || !requestId.current) {
             requestId.current = crypto.randomUUID();
             submittedDetails.current = fingerprint;
@@ -162,6 +171,44 @@ export default function ConsultationForm({ type }: { type: number }) {
           />{" "}
           <span>전화 상담을 위한 개인정보 수집·이용에 동의합니다. (필수)</span>
         </label>
+        <div className="newsletter-fields">
+          <label className="consent-label">
+            <input
+              type="checkbox"
+              name="newsletterConsent"
+              value="true"
+              checked={newsletter}
+              onChange={(event) => setNewsletter(event.target.checked)}
+              disabled={!ready || pending}
+            />
+            <span>
+              이메일 뉴스레터 수신 및 이를 위한 개인정보 수집·이용에 동의합니다.
+              (선택)
+            </span>
+          </label>
+          <details className="privacy-details">
+            <summary>뉴스레터 개인정보 수집·이용 안내</summary>
+            <p>{newsletterText}</p>
+          </details>
+          <label htmlFor="lead-email">
+            이메일 <span>(뉴스레터 수신 선택 시 입력)</span>
+          </label>
+          <input
+            id="lead-email"
+            name="email"
+            type="email"
+            autoComplete="email"
+            maxLength={254}
+            required={newsletter}
+            disabled={!ready || pending || !newsletter}
+            placeholder="example@email.com"
+          />
+          <p className="newsletter-note">
+            뉴스레터 수신은 선택 사항이며 동의하지 않아도 전화 상담을 신청할 수
+            있습니다.
+          </p>
+        </div>
+        <input type="hidden" name="newsletterText" value={newsletterText} />
         <input type="hidden" name="type" value={type} />
         <input type="hidden" name="requestId" />
         <input type="hidden" name="consentVersion" value={CONSENT_VERSION} />
