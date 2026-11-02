@@ -34,6 +34,10 @@ for (let type = 0; type < 3; type++) {
     await expect(
       page.getByRole("heading", { name: courses[type].title, exact: true }),
     ).toBeVisible();
+    await expect(page.getByText("임시 가격", { exact: false })).toHaveCount(0);
+    await expect(
+      page.getByRole("button", { name: "상담하기", exact: true }),
+    ).toBeVisible();
     await expect(page.locator(".need-summary")).toContainText(
       questions[2].options[type],
     );
