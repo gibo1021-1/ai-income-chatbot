@@ -60,3 +60,14 @@ test("모바일 가로 넘침과 준비 중 링크 상태", async ({ page }) => 
   );
   await expect(page.locator(".courses .unavailable")).toHaveCount(3);
 });
+
+test("상담 신청이 카카오톡 채널에 새 창으로 연결된다", async ({ page }) => {
+  await page.goto("/");
+  const link = page.getByRole("link", { name: "상담 신청" });
+  await expect(link).toHaveAttribute(
+    "href",
+    "https://pf.kakao.com/_xgrjxaX/chat",
+  );
+  await expect(link).toHaveAttribute("target", "_blank");
+  await expect(link).toHaveAttribute("rel", "noopener noreferrer");
+});
