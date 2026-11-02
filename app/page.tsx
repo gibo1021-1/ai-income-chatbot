@@ -12,6 +12,7 @@ import {
   Download,
 } from "lucide-react";
 import { courses, diagnose, links, questions } from "../lib/diagnosis";
+import { freeResources } from "../lib/resources";
 const homeHref = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/`;
 function ExternalLink({
   href,
@@ -274,9 +275,28 @@ export default function Home() {
             <h2>첫걸음이 가벼워지는 무료 자료</h2>
             <p>AI 수익화 시작 가이드와 함께 아이디어를 구체화해 보세요.</p>
           </div>
-          <ExternalLink href={links.resource} className="secondary">
-            무료 자료 받기
-          </ExternalLink>
+          <details className="resource-details">
+            <summary className="secondary">
+              무료 자료 보기 <ArrowRight size={16} />
+            </summary>
+            <ul className="resource-links" aria-label="무료 자료 링크 목록">
+              {freeResources.map((resource) => (
+                <li key={resource.url}>
+                  <ExternalLink href={resource.url} className="resource-card">
+                    <span>
+                      <strong>{resource.title}</strong>
+                      <span className="resource-description">
+                        {resource.description}
+                      </span>
+                    </span>
+                  </ExternalLink>
+                </li>
+              ))}
+            </ul>
+            <p className="resource-link-note">
+              자료는 외부 페이지에서 새 창으로 열립니다.
+            </p>
+          </details>
         </section>
         {result && (
           <div className="notice">

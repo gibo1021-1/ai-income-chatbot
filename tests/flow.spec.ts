@@ -67,16 +67,22 @@ for (let type = 0; type < 3; type++) {
     expect(errors).toEqual([]);
   });
 }
-test("모바일 가로 넘침과 준비 중 링크 상태", async ({ page }) => {
+test("무료 자료 목록과 모바일 가로 넘침", async ({ page }) => {
   await page.goto("./");
   expect(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= window.innerWidth,
     ),
   ).toBe(true);
-  await expect(page.locator('.resource [aria-disabled="true"]')).toContainText(
-    "준비 중",
-  );
+  const ebook = page.getByRole("link", { name: /AI 활용법 완전초보 전자책/ });
+  await expect(ebook).not.toBeVisible();
+  await page.locator(".resource-details summary").click();
+  await expect(ebook).toBeVisible();
+  await expect(ebook).toHaveAttribute("href", "https://url.kr/he1eak");
+  await expect(ebook).toHaveAttribute("target", "_blank");
+  await expect(ebook).toHaveAttribute("rel", "noopener noreferrer");
+  await page.locator(".resource-details summary").click();
+  await expect(ebook).not.toBeVisible();
   await expect(page.locator(".result-box")).toHaveCount(0);
 });
 

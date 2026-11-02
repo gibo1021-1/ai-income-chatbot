@@ -109,7 +109,6 @@ export function safeUrl(value: string | undefined) {
   }
 }
 export const links = {
-  resource: safeUrl(process.env.NEXT_PUBLIC_RESOURCE_URL),
   consultation: safeUrl(
     process.env.NEXT_PUBLIC_CONSULTATION_URL ||
       "https://pf.kakao.com/_xgrjxaX/chat",
