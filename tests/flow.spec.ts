@@ -10,11 +10,15 @@ for (let type = 0; type < 3; type++) {
     await expect(
       page.getByRole("heading", { name: "AI 수익화 1분 무료 진단" }),
     ).toBeVisible();
+    for (const c of courses)
+      await expect(page.getByText(c.price, { exact: false })).toHaveCount(0);
     await page.getByRole("button", { name: "무료 진단 시작하기" }).click();
     await expect(
       page.getByRole("button", { name: "다음 질문" }),
     ).toBeDisabled();
     for (let q = 0; q < 4; q++) {
+      for (const c of courses)
+        await expect(page.getByText(c.price, { exact: false })).toHaveCount(0);
       await page.locator(".options button").nth(type).click();
       await page
         .getByRole("button", { name: q === 3 ? "진단 결과 보기" : "다음 질문" })
@@ -26,7 +30,20 @@ for (let type = 0; type < 3; type++) {
     await expect(page.locator(".result-box")).toContainText(
       courses[type].price,
     );
+    for (let other = 0; other < courses.length; other++) {
+      if (other !== type)
+        await expect(
+          page.getByText(courses[other].price, { exact: false }),
+        ).toHaveCount(0);
+    }
+    await expect(
+      page
+        .getByRole("list", { name: "추천 과정 학습 내용" })
+        .getByRole("listitem"),
+    ).toHaveCount(3);
     await page.getByRole("button", { name: "답변 수정" }).click();
+    for (const c of courses)
+      await expect(page.getByText(c.price, { exact: false })).toHaveCount(0);
     await expect(page.locator(".options button").nth(type)).toHaveAttribute(
       "aria-pressed",
       "true",
@@ -41,6 +58,8 @@ for (let type = 0; type < 3; type++) {
       page.locator(".options button").nth((type + 1) % 3),
     ).toHaveAttribute("aria-pressed", "true");
     await page.getByRole("button", { name: "처음부터 다시 시작" }).click();
+    for (const c of courses)
+      await expect(page.getByText(c.price, { exact: false })).toHaveCount(0);
     await page.getByRole("button", { name: "무료 진단 시작하기" }).click();
     await expect(
       page.getByRole("button", { name: "다음 질문" }),
@@ -58,7 +77,7 @@ test("모바일 가로 넘침과 준비 중 링크 상태", async ({ page }) => 
   await expect(page.locator('.resource [aria-disabled="true"]')).toContainText(
     "준비 중",
   );
-  await expect(page.locator(".courses .unavailable")).toHaveCount(3);
+  await expect(page.locator(".result-box")).toHaveCount(0);
 });
 
 test("상담 신청이 카카오톡 채널에 새 창으로 연결된다", async ({ page }) => {
