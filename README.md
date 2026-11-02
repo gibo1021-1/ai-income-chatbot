@@ -38,7 +38,7 @@ Node.js 22 이상 권장. 브라우저에서 http://localhost:3000 을 엽니다
 
 결과 화면에서 추천 과정과 확정 가격을 안내한 뒤 이름·연락처·개인정보 동의를 받아 담당자가 전화 상담하는 구조입니다. 1단계 19만 원, 2단계 79만 원, 3단계 299만 원으로 확정했습니다.
 
-[Google Apps Script 연결 설명](integrations/google-apps-script/README.md)을 참고하세요. 스프레드시트는 비공개로 유지합니다. Apps Script 웹 앱을 실제 배포한 주소 및 개인정보 안내가 일치해야 접수 폼이 활성화됩니다. 설정 전에는 입력과 전송을 막고 카카오톡 문의를 안내합니다. 저장 성공 신호 확인 전에는 접수 완료를 표시하지 않습니다.
+[Google Apps Script 연결 설명](integrations/google-apps-script/README.md)을 참고하세요. 스프레드시트는 비공개로 유지합니다. Apps Script 웹 앱을 실제 배포한 주소 및 개인정보 안내가 일치해야 접수 폼이 활성화됩니다. 사용자가 제공한 `/exec` 주소를 기본 연결했습니다. 실제 Google 웹 앱 권한·저장 동작은 사용자 브라우저의 접수 후 시트에서 최종 확인해야 합니다. 주소를 일시적으로 비활성화하려면 `NEXT_PUBLIC_CONSULTATION_ENDPOINT=disabled`로 재빌드합니다. 저장 성공 신호 확인 전에는 접수 완료를 표시하지 않습니다.
 
 | GitHub Actions 변수                 | 용도                            |
 | ----------------------------------- | ------------------------------- |
@@ -106,3 +106,9 @@ git status --short
 Pages용으로 `GITHUB_PAGES=true npm run build`를 실행하면 `out/`에 정적 파일이 생성됩니다. `/ai-income-chatbot/` 하위 경로의 스타일·스크립트·홈 링크를 지원합니다. 일반 로컬 실행은 `npm run dev` 또는 `npm run build && npm run start`입니다.
 
 [Pages 설정 열기](https://github.com/gibo1021-1/ai-income-chatbot/settings/pages) · [PR 열기](https://github.com/gibo1021-1/ai-income-chatbot/pull/1)
+
+### 저장 연결 검증 상태
+
+제공된 Apps Script 웹 앱을 상담 폼에 연결했습니다. 실행 환경의 Google 도메인 접속 제한(프록시 403)으로 실제 신청 쓰기는 검증하지 못했습니다. 실제 고객 정보를 받기 전에 시크릿 창에서 테스트 신청 1건을 보내고, 관리 시트에 같은 접수번호가 저장되는지 확인해야 합니다. URL에 접속했다는 사실이나 모의 테스트 성공을 실제 저장 성공으로 간주하지 않습니다.
+
+브라우저 모의 전송 테스트는 `TEST_COLLECTOR_MOCK=true`와 테스트 수신 주소를 명시적으로 주입해서 실행합니다. 미설정 차단 테스트는 `TEST_COLLECTOR_DISABLED=true` 및 빌드 시 `NEXT_PUBLIC_CONSULTATION_ENDPOINT=disabled`를 지정해야 합니다. 일반 E2E 실행은 실제 운영 서버에 테스트 신청을 전송하지 않습니다.

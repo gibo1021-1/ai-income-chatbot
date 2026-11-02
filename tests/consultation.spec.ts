@@ -1,9 +1,5 @@
 import { test, expect, type Page } from "@playwright/test";
-const configured = Boolean(
-  process.env.NEXT_PUBLIC_CONSULTATION_ENDPOINT &&
-  process.env.NEXT_PUBLIC_PRIVACY_CONTROLLER &&
-  process.env.NEXT_PUBLIC_PRIVACY_RETENTION,
-);
+const configured = process.env.TEST_COLLECTOR_MOCK === "true";
 async function result(page: Page) {
   await page.goto("./");
   await page.getByRole("button", { name: "무료 진단 시작하기" }).click();
@@ -15,7 +11,10 @@ async function result(page: Page) {
   }
 }
 test("저장 연결이 없으면 개인정보를 전송할 수 없다", async ({ page }) => {
-  test.skip(configured, "미설정 모드 검증");
+  test.skip(
+    process.env.TEST_COLLECTOR_DISABLED !== "true",
+    "명시적 미설정 모드에서만 확인",
+  );
   await result(page);
   await expect(
     page.getByRole("button", { name: "상담하기", exact: true }),
@@ -149,4 +148,31 @@ test("뉴스레터 선택 동의 시에만 이메일을 전송한다", async ({ 
   expect(sent!.get("email")).toBe("reader@example.com");
   expect(sent!.get("newsletterConsent")).toBe("true");
   expect(sent!.get("newsletterText")).toContain("이메일 뉴스레터 발송");
+});
+
+test("실제 수신 주소가 폼에 연결되며 전송 전까지 요청하지 않는다", async ({
+  page,
+}) => {
+  test.skip(
+    configured || process.env.TEST_COLLECTOR_DISABLED === "true",
+    "기본 연결 모드에서만 확인",
+  );
+  const requests: string[] = [];
+  page.on("request", (request) => {
+    if (request.url().includes("script.google.com"))
+      requests.push(request.method());
+  });
+  await result(page);
+  await expect(page.locator(".consultation-form form")).toHaveAttribute(
+    "action",
+    "https://script.google.com/macros/s/AKfycbyunldSMFZ1YbMKd8LkkDbXYiFKPupxNCOO3H8MppIThuSNyl9U-nXDgvBAN_G75e1avQ/exec",
+  );
+  await expect(
+    page.getByRole("button", { name: "상담하기", exact: true }),
+  ).toBeEnabled();
+  await expect(page.locator("#lead-name")).toBeEnabled();
+  await expect(
+    page.getByRole("checkbox", { name: "이메일 뉴스레터", exact: false }),
+  ).not.toBeChecked();
+  expect(requests).toEqual([]);
 });
