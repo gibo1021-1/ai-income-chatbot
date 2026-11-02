@@ -6,7 +6,7 @@
     "dev": "next dev --hostname 0.0.0.0",
     "build": "next build",
     "start": "next start",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "next typegen && tsc --noEmit",
     "test": "tsx --test tests/diagnosis.test.ts",
     "test:e2e": "playwright test",
     "format": "prettier --write app lib tests *.ts *.mjs *.json README.md"
