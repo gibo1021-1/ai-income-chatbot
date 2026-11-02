@@ -1,4 +1,5 @@
 import { test, expect, type Page } from "@playwright/test";
+import { consentText } from "../lib/consultation";
 const configured = process.env.TEST_COLLECTOR_MOCK === "true";
 async function result(page: Page) {
   await page.goto("./");
@@ -91,6 +92,8 @@ for (const outcome of ["success", "error", "silence"])
     }
     expect(sent!.get("type")).toBe("0");
     expect(sent!.get("consent")).toBe("true");
+    expect(sent!.get("consentText")).toContain("\r\n");
+    expect(sent!.get("consentText")!.replace(/\r\n?/g, "\n")).toBe(consentText);
     expect(sent!.get("name")).toBe("테스트");
     expect(sent!.get("email")).toBeNull();
     expect(sent!.get("newsletterConsent")).toBeNull();

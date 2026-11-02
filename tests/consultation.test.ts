@@ -200,3 +200,27 @@ test("뉴스레터 동의와 이메일은 선택이며 미동의 이메일은 �
   );
   assert.equal(invalid.rows.length, 0);
 });
+
+test("브라우저 폼 전송의 CRLF 줄바꿈은 같은 동의문으로 처리한다", () => {
+  const s = server();
+  assert.match(
+    s.post({
+      ...s.payload,
+      consentText: s.payload.consentText.replace(/\n/g, "\r\n"),
+      newsletterConsent: "true",
+      email: "reader@example.com",
+      newsletterText: buildNewsletterText(
+        "북 브랜딩 랩",
+        "수집일로부터 3년",
+      ).replace(/\n/g, "\r\n"),
+    }),
+    /"status":"success"/,
+  );
+  assert.equal(s.rows.length, 2);
+  assert.equal(s.rows[1][8], s.payload.consentText);
+  assert.equal(s.rows[1][11], "reader@example.com");
+  assert.equal(
+    s.rows[1][13],
+    buildNewsletterText("북 브랜딩 랩", "수집일로부터 3년"),
+  );
+});
