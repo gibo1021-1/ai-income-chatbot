@@ -8,15 +8,11 @@ import {
   Check,
   Clock3,
   ShieldCheck,
-  Sprout,
-  Layers3,
-  BookOpen,
   RotateCcw,
   Download,
 } from "lucide-react";
 import { courses, diagnose, links, questions } from "../lib/diagnosis";
 const homeHref = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/`;
-const icons = [Sprout, Layers3, BookOpen];
 function ExternalLink({
   href,
   children,
@@ -72,7 +68,7 @@ export default function Home() {
         </a>
         <nav aria-label="주요 메뉴">
           <a href="#journey">성장 로드맵</a>
-          <a href="#courses">추천 과정</a>
+          <a href="#diagnosis">{result ? "추천 과정" : "무료 진단"}</a>
           <ExternalLink href={links.consultation} className="nav-consult">
             상담 신청
           </ExternalLink>
@@ -161,6 +157,17 @@ export default function Home() {
                 <div className="result-box">
                   <span>추천 과정 · STEP {course.step}</span>
                   <strong>{course.action}</strong>
+                  <ul
+                    className="result-curriculum"
+                    aria-label="추천 과정 학습 내용"
+                  >
+                    {course.items.map((item) => (
+                      <li key={item}>
+                        <Check size={14} />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
                   <b>
                     {course.price}{" "}
                     {course.provisional && <small>임시 가격</small>}
@@ -258,48 +265,6 @@ export default function Home() {
             지금 나에게 필요한 한 걸음을 함께 찾아요.
           </p>
         </section>
-        <section id="courses" className="courses" aria-label="유형별 추천 강의">
-          {courses.map((c, i) => {
-            const Icon = icons[i];
-            return (
-              <article className={`course course-${i}`} key={c.step}>
-                <div className="course-heading">
-                  <span className="course-icon">
-                    <Icon size={23} strokeWidth={1.5} />
-                  </span>
-                  <span className="step">STEP {c.step}</span>
-                </div>
-                <span className="course-label">{c.label}</span>
-                <h3>{c.short}</h3>
-                <p>{c.description}</p>
-                <ul>
-                  {c.items.map((item) => (
-                    <li key={item}>
-                      <Check size={14} />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <div className="course-bottom">
-                  <div>
-                    <strong>{c.price}</strong>
-                    {c.provisional ? (
-                      <span className="price-tag">임시 가격</span>
-                    ) : (
-                      <span className="price-tag">책 출판 과정</span>
-                    )}
-                  </div>
-                  <ExternalLink
-                    href={links.payments[i]}
-                    className="course-link"
-                  >
-                    과정 신청
-                  </ExternalLink>
-                </div>
-              </article>
-            );
-          })}
-        </section>
         <section className="resource">
           <div className="resource-icon">
             <Download size={25} />
@@ -313,12 +278,18 @@ export default function Home() {
             무료 자료 받기
           </ExternalLink>
         </section>
-        <div className="notice">
-          1·2단계 가격은 임시 가격이며 변경될 수 있습니다. 강의 상세 일정과 제공
-          범위는 신청 전 확인해 주세요.
-          <br />
-          외부 신청 페이지에서 결제 조건과 개인정보 처리 내용을 확인해 주세요.
-        </div>
+        {result && (
+          <div className="notice">
+            {course.provisional && (
+              <>
+                안내된 가격은 임시 가격이며 변경될 수 있습니다.
+                <br />
+              </>
+            )}
+            강의 상세 일정과 제공 범위, 외부 신청 페이지의 결제 조건은 신청 전
+            확인해 주세요.
+          </div>
+        )}
       </main>
       <footer>
         <a href={homeHref} className="brand">

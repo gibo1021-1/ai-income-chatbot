@@ -780,3 +780,21 @@ footer > span:last-child {
     transition: none !important;
   }
 }
+
+.result-curriculum {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px;
+  color: #626f5b;
+  font-size: 11px;
+  line-height: 1.8;
+}
+.result-curriculum li {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 5px;
+}
+.result-curriculum svg {
+  flex-shrink: 0;
+}
