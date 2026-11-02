@@ -11,7 +11,13 @@ import {
   RotateCcw,
   Download,
 } from "lucide-react";
-import { courses, diagnose, links, questions } from "../lib/diagnosis";
+import {
+  courses,
+  diagnose,
+  links,
+  questions,
+  BLOCKER_QUESTION_INDEX,
+} from "../lib/diagnosis";
 import { freeResources } from "../lib/resources";
 const homeHref = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/`;
 function ExternalLink({
@@ -93,10 +99,10 @@ export default function Home() {
             </p>
             <div className="hero-facts">
               <span>
-                <Clock3 size={16} /> 단 1분
+                <Clock3 size={16} /> 약 2분
               </span>
               <span>
-                <Check size={16} /> 질문 4개
+                <Check size={16} /> 질문 {questions.length}개
               </span>
               <span>
                 <ShieldCheck size={16} /> 무료 · 가입 없이
@@ -120,7 +126,9 @@ export default function Home() {
               <>
                 <div className="card-top">
                   <span className="pill">FREE DIAGNOSIS</span>
-                  <span className="small-muted">01 — 04</span>
+                  <span className="small-muted">
+                    01 — {String(questions.length).padStart(2, "0")}
+                  </span>
                 </div>
                 <div className="orb">
                   <Sparkles size={39} strokeWidth={1.4} />
@@ -132,10 +140,10 @@ export default function Home() {
                 <h2>
                   AI 수익화
                   <br />
-                  1분 무료 진단
+                  무료 진단
                 </h2>
                 <p>
-                  네 가지 질문에 답하고
+                  여덟 가지 질문에 답하고
                   <br />
                   나에게 맞는 다음 단계를 만나보세요.
                 </p>
@@ -154,6 +162,18 @@ export default function Home() {
                 </div>
                 <span className="result-label">나에게 추천하는 방향</span>
                 <h2 className="result-title">{course.title}</h2>
+                <div className="need-summary">
+                  <span>답변에서 짚어 본 나의 고민</span>
+                  <p>
+                    “
+                    {
+                      questions[BLOCKER_QUESTION_INDEX].options[
+                        answers[BLOCKER_QUESTION_INDEX]
+                      ]
+                    }
+                    ”
+                  </p>
+                </div>
                 <p>{course.description}</p>
                 <div className="result-box">
                   <span>추천 과정 · STEP {course.step}</span>
@@ -194,11 +214,19 @@ export default function Home() {
                 <div className="card-top">
                   <span className="pill">MY DISCOVERY</span>
                   <span className="small-muted">
-                    {String(step + 1).padStart(2, "0")} / 04
+                    {String(step + 1).padStart(2, "0")} /{" "}
+                    {String(questions.length).padStart(2, "0")}
                   </span>
                 </div>
-                <div className="progress" aria-label={`질문 ${step + 1}/4`}>
-                  <span style={{ width: `${(step + 1) * 25}%` }} />
+                <div
+                  className="progress"
+                  aria-label={`질문 ${step + 1}/${questions.length}`}
+                >
+                  <span
+                    style={{
+                      width: `${((step + 1) / questions.length) * 100}%`,
+                    }}
+                  />
                 </div>
                 <span className="question-number">QUESTION 0{step + 1}</span>
                 <h2 className="question-title">{questions[step].title}</h2>
@@ -235,13 +263,15 @@ export default function Home() {
                     className="primary"
                     disabled={answers[step] === undefined}
                     onClick={() => {
-                      if (step === 3) {
+                      if (step === questions.length - 1) {
                         setResult(true);
                         requestAnimationFrame(() => panel.current?.focus());
                       } else move(step + 1);
                     }}
                   >
-                    {step === 3 ? "진단 결과 보기" : "다음 질문"}
+                    {step === questions.length - 1
+                      ? "진단 결과 보기"
+                      : "다음 질문"}
                     <ArrowRight size={18} />
                   </button>
                 </div>

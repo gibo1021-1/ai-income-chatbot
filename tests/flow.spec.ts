@@ -1,15 +1,15 @@
 import { test, expect } from "@playwright/test";
 import { freeResources } from "../lib/resources";
-import { courses } from "../lib/diagnosis";
+import { courses, questions } from "../lib/diagnosis";
 for (let type = 0; type < 3; type++) {
-  test(`유형 ${type + 1}: 시작 → 질문 4개 → 추천 과정 → 수정 → 재시작`, async ({
+  test(`유형 ${type + 1}: 시작 → 질문 8개 → 추천 과정 → 수정 → 재시작`, async ({
     page,
   }) => {
     const errors: string[] = [];
     page.on("pageerror", (e) => errors.push(e.message));
     await page.goto("./");
     await expect(
-      page.getByRole("heading", { name: "AI 수익화 1분 무료 진단" }),
+      page.getByRole("heading", { name: "AI 수익화 무료 진단" }),
     ).toBeVisible();
     for (const c of courses)
       await expect(page.getByText(c.price, { exact: false })).toHaveCount(0);
@@ -17,17 +17,26 @@ for (let type = 0; type < 3; type++) {
     await expect(
       page.getByRole("button", { name: "다음 질문" }),
     ).toBeDisabled();
-    for (let q = 0; q < 4; q++) {
+    for (let q = 0; q < questions.length; q++) {
       for (const c of courses)
         await expect(page.getByText(c.price, { exact: false })).toHaveCount(0);
+      await expect(page.locator(".progress")).toHaveAttribute(
+        "aria-label",
+        `질문 ${q + 1}/${questions.length}`,
+      );
       await page.locator(".options button").nth(type).click();
       await page
-        .getByRole("button", { name: q === 3 ? "진단 결과 보기" : "다음 질문" })
+        .getByRole("button", {
+          name: q === questions.length - 1 ? "진단 결과 보기" : "다음 질문",
+        })
         .click();
     }
     await expect(
       page.getByRole("heading", { name: courses[type].title, exact: true }),
     ).toBeVisible();
+    await expect(page.locator(".need-summary")).toContainText(
+      questions[2].options[type],
+    );
     await expect(page.locator(".result-box")).toContainText(
       courses[type].price,
     );
