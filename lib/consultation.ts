@@ -31,7 +31,8 @@ export function collectorUrl(value: string | undefined) {
     : null;
 }
 export const consultationEndpoint = collectorUrl(
-  process.env.NEXT_PUBLIC_CONSULTATION_ENDPOINT,
+  process.env.NEXT_PUBLIC_CONSULTATION_ENDPOINT ||
+    "https://script.google.com/macros/s/AKfycbyunldSMFZ1YbMKd8LkkDbXYiFKPupxNCOO3H8MppIThuSNyl9U-nXDgvBAN_G75e1avQ/exec",
 );
 export function validLead(name: string, phone: string, consent: boolean) {
   if (!/^[\p{L}\p{M}][\p{L}\p{M} .'-]{1,39}$/u.test(name.trim()))
