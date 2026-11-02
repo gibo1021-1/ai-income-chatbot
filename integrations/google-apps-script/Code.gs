@@ -61,6 +61,9 @@ function reply_(requestId, status) {
   return HtmlService.createHtmlOutput('<!doctype html><html><body><script>window.top.postMessage(' + payload + ',' + JSON.stringify(LEAD_SITE) + ');</script></body></html>').setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
 }
 function doGet() { return ContentService.createTextOutput('전화 상담은 진단 사이트에서 신청해 주세요.'); }
+// Native browser form POST normalizes LF in hidden inputs to CRLF.
+// Normalize line endings only; all wording and policy versions must still match.
+function normalizeConsent_(value) { return String(value || '').replace(/\r\n?/g, '\n'); }
 function doPost(e) {
   var p = e && e.parameter || {};
   var requestId = /^[a-f0-9-]{36}$/i.test(String(p.requestId || '')) ? p.requestId : '';
@@ -68,8 +71,8 @@ function doPost(e) {
   try {
     var config = leadConfig_();
     var lead = validateLead_(p);
-    if (lead.newsletter && p.newsletterText !== leadNewsletter_(config)) throw new Error('Newsletter consent changed');
-    if (p.consentText !== leadConsent_(config)) throw new Error('Consent changed');
+    if (lead.newsletter && normalizeConsent_(p.newsletterText) !== leadNewsletter_(config)) throw new Error('Newsletter consent changed');
+    if (normalizeConsent_(p.consentText) !== leadConsent_(config)) throw new Error('Consent changed');
     lock = LockService.getScriptLock();
     lock.waitLock(10000);
     var sheet = leadSheet_(config);
