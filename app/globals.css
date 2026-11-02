@@ -798,3 +798,74 @@ footer > span:last-child {
 .result-curriculum svg {
   flex-shrink: 0;
 }
+
+.resource {
+  flex-wrap: wrap;
+}
+.resource-details {
+  width: 100%;
+}
+.resource-details summary {
+  cursor: pointer;
+  margin-left: 0;
+  width: fit-content;
+  list-style: none;
+}
+.resource-details summary::-webkit-details-marker {
+  display: none;
+}
+.resource-details summary:focus-visible {
+  outline: 3px solid #b59452;
+  outline-offset: 5px;
+}
+.resource-details[open] summary svg {
+  transform: rotate(90deg);
+}
+.resource-links {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 10px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.resource-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #d9e1d1;
+  border-radius: 9px;
+}
+.resource-card:hover {
+  background: #f8faf4;
+}
+.resource-card strong {
+  font-size: 14px;
+  line-height: 1.6;
+}
+.resource-description {
+  display: block;
+  font-size: 11px;
+  line-height: 1.8;
+  color: #697662;
+  margin-top: 6px;
+}
+.resource-card > svg {
+  flex-shrink: 0;
+}
+.resource .resource-link-note {
+  font-size: 10px;
+  color: #697662;
+  line-height: 1.7;
+}
+@media (max-width: 720px) {
+  .resource-links {
+    grid-template-columns: 1fr;
+  }
+  .resource-details summary {
+    width: 100%;
+  }
+}

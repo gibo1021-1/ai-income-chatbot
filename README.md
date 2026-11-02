@@ -34,13 +34,12 @@ Node.js 22 이상 권장. 브라우저에서 http://localhost:3000 을 엽니다
 
 ## 실제 링크 연결
 
-상담 신청은 제공된 카카오톡 채널 `https://pf.kakao.com/_xgrjxaX/chat`에 기본 연결되어 있습니다. 환경변수로 다른 주소를 지정할 수 있으며, 별도 설정 없이 clone해도 상담 링크가 유지됩니다. 무료 자료와 결제 주소는 추가 설정이 필요합니다.
+상담 신청은 제공된 카카오톡 채널 `https://pf.kakao.com/_xgrjxaX/chat`에 기본 연결되어 있습니다. 환경변수로 다른 주소를 지정할 수 있으며, 별도 설정 없이 clone해도 상담 링크가 유지됩니다. 무료 자료는 `lib/resources.ts`의 링크 목록으로 관리하고, 결제 주소는 환경변수로 설정합니다. 현재 확인된 전자책 링크를 등록했습니다. 노션의 6개 카테고리는 페이지 접근 권한이 없어 이름과 공유 주소 확인 후 추가해야 합니다.
 
 `.env.example`을 `.env.local`로 복사해 아래 값을 설정하세요. 실제 주소가 없거나 올바른 HTTPS 주소가 아니면 버튼은 **준비 중**으로 표시됩니다. 가짜 결제 페이지로 이동하거나 신청이 완료되었다고 표시하지 않습니다.
 
 | 변수                            | 용도                           |
 | ------------------------------- | ------------------------------ |
-| `NEXT_PUBLIC_RESOURCE_URL`      | 무료 자료 다운로드/안내 페이지 |
 | `NEXT_PUBLIC_CONSULTATION_URL`  | 상담 신청 양식                 |
 | `NEXT_PUBLIC_PAYMENT_STEP1_URL` | 1단계 외부 결제                |
 | `NEXT_PUBLIC_PAYMENT_STEP2_URL` | 2단계 외부 결제                |
@@ -86,7 +85,7 @@ git status --short
 4. Actions → Deploy GitHub Pages → Run workflow → main을 선택해 실행합니다. 이후 main에 push하면 자동 갱신합니다.
 5. 배포 성공 후 `https://gibo1021-1.github.io/ai-income-chatbot/`을 공유합니다. 배포 완료 전에는 이 주소가 열리지 않을 수 있습니다.
 
-무료 자료·결제 링크는 Settings → Secrets and variables → Actions → Variables에 `.env.example`과 같은 이름으로 추가한 뒤 워크플로를 재실행하세요. 상담은 제공된 카카오 주소를 기본값으로 사용합니다.
+결제 링크는 Settings → Secrets and variables → Actions → Variables에 `.env.example`과 같은 이름으로 추가한 뒤 워크플로를 재실행하세요. 상담은 제공된 카카오 주소를 기본값으로 사용합니다.
 
 Pages용으로 `GITHUB_PAGES=true npm run build`를 실행하면 `out/`에 정적 파일이 생성됩니다. `/ai-income-chatbot/` 하위 경로의 스타일·스크립트·홈 링크를 지원합니다. 일반 로컬 실행은 `npm run dev` 또는 `npm run build && npm run start`입니다.
 
