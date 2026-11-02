@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { freeResources } from "../lib/resources";
 import { courses } from "../lib/diagnosis";
 for (let type = 0; type < 3; type++) {
   test(`유형 ${type + 1}: 시작 → 질문 4개 → 추천 과정 → 수정 → 재시작`, async ({
@@ -78,6 +79,18 @@ test("무료 자료 목록과 모바일 가로 넘침", async ({ page }) => {
   await expect(ebook).not.toBeVisible();
   await page.locator(".resource-details summary").click();
   await expect(ebook).toBeVisible();
+  await expect(page.locator(".resource-links > li")).toHaveCount(7);
+  for (const resource of freeResources) {
+    const link = page.getByRole("link", { name: resource.title, exact: false });
+    await expect(link).toHaveAttribute("href", resource.url);
+    await expect(link).toHaveAttribute("target", "_blank");
+    await expect(link).toHaveAttribute("rel", "noopener noreferrer");
+  }
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= window.innerWidth,
+    ),
+  ).toBe(true);
   await expect(ebook).toHaveAttribute("href", "https://url.kr/he1eak");
   await expect(ebook).toHaveAttribute("target", "_blank");
   await expect(ebook).toHaveAttribute("rel", "noopener noreferrer");
