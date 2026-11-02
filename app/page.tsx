@@ -15,6 +15,7 @@ import {
   Download,
 } from "lucide-react";
 import { courses, diagnose, links, questions } from "../lib/diagnosis";
+const homeHref = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/`;
 const icons = [Sprout, Layers3, BookOpen];
 function ExternalLink({
   href,
@@ -63,7 +64,7 @@ export default function Home() {
   return (
     <>
       <header className="header">
-        <a href="/" className="brand" aria-label="AI NEXT 홈">
+        <a href={homeHref} className="brand" aria-label="AI NEXT 홈">
           <span className="brand-icon">
             <Sparkles size={21} />
           </span>
@@ -320,7 +321,7 @@ export default function Home() {
         </div>
       </main>
       <footer>
-        <a href="/" className="brand">
+        <a href={homeHref} className="brand">
           AI NEXT<span className="brand-dot">.</span>
         </a>
         <span>당신의 경험이, 새로운 가능성이 되도록.</span>

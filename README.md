@@ -1,6 +1,6 @@
 # AI NEXT — AI 수익화 1분 무료 진단
 
-Next.js App Router · TypeScript · Tailwind CSS로 구현한 한국어 반응형 진단 웹사이트입니다. 공개 배포를 하지 않습니다. 답변은 브라우저 메모리에서만 처리하며 서버 전송이나 저장을 하지 않습니다. 새로고침하면 진단은 초기화됩니다. AI 모델 API 호출 없이 네 질문의 규칙 기반 점수로 추천합니다.
+Next.js App Router · TypeScript · Tailwind CSS로 구현한 한국어 반응형 진단 웹사이트입니다. GitHub Pages에서 배포할 수 있으며 Vercel은 사용하지 않습니다. 답변은 브라우저 메모리에서만 처리하며 서버 전송이나 저장을 하지 않습니다. 새로고침하면 진단은 초기화됩니다. AI 모델 API 호출 없이 네 질문의 규칙 기반 점수로 추천합니다.
 
 ## 실행 및 복구
 
@@ -74,6 +74,18 @@ git status --short
 
 앞의 두 SHA가 같고 상태 출력이 비어 있으면 현재 브랜치가 원격과 일치합니다. 별도 백업은 `git bundle create ai-income-chatbot.bundle --all`로 만들 수 있고, 다른 컴퓨터에서 `git clone ai-income-chatbot.bundle`로 복구할 수 있습니다.
 
-## 배포 제한
+## GitHub Pages 배포
 
-GitHub Pages 워크플로는 없으며 `vercel.json`에서 Git 기반 자동 배포를 비활성화했습니다. Vercel/GitHub Pages에 공개 배포하지 않습니다. 로컬 미리보기는 `npm run dev`, 프로덕션 미리보기는 `npm run build && npm run start`를 사용하세요.
+사용자의 후속 요청에 따라 GitHub Pages 배포를 준비했습니다. Vercel 자동 배포는 계속 비활성화되어 있습니다.
+
+1. 비공개 저장소는 GitHub Pro 이상이 필요합니다. 무료 계정이면 Settings → General → Danger Zone → Change repository visibility에서 Public으로 변경해야 합니다. **이 경우 소스 코드와 Git 기록이 공개되므로 소유자의 명시적인 동의가 필요합니다.**
+2. PR #1을 main에 병합합니다.
+3. 저장소 Settings → Pages → Build and deployment → Source를 **GitHub Actions**로 선택합니다.
+4. Actions → Deploy GitHub Pages → Run workflow → main을 선택해 실행합니다. 이후 main에 push하면 자동 갱신합니다.
+5. 배포 성공 후 `https://gibo1021-1.github.io/ai-income-chatbot/`을 공유합니다. 배포 완료 전에는 이 주소가 열리지 않을 수 있습니다.
+
+무료 자료·결제 링크는 Settings → Secrets and variables → Actions → Variables에 `.env.example`과 같은 이름으로 추가한 뒤 워크플로를 재실행하세요. 상담은 제공된 카카오 주소를 기본값으로 사용합니다.
+
+Pages용으로 `GITHUB_PAGES=true npm run build`를 실행하면 `out/`에 정적 파일이 생성됩니다. `/ai-income-chatbot/` 하위 경로의 스타일·스크립트·홈 링크를 지원합니다. 일반 로컬 실행은 `npm run dev` 또는 `npm run build && npm run start`입니다.
+
+[Pages 설정 열기](https://github.com/gibo1021-1/ai-income-chatbot/settings/pages) · [PR 열기](https://github.com/gibo1021-1/ai-income-chatbot/pull/1)

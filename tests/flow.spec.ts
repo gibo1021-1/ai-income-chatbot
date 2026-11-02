@@ -6,7 +6,7 @@ for (let type = 0; type < 3; type++) {
   }) => {
     const errors: string[] = [];
     page.on("pageerror", (e) => errors.push(e.message));
-    await page.goto("/");
+    await page.goto("./");
     await expect(
       page.getByRole("heading", { name: "AI 수익화 1분 무료 진단" }),
     ).toBeVisible();
@@ -49,7 +49,7 @@ for (let type = 0; type < 3; type++) {
   });
 }
 test("모바일 가로 넘침과 준비 중 링크 상태", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("./");
   expect(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= window.innerWidth,
@@ -62,7 +62,7 @@ test("모바일 가로 넘침과 준비 중 링크 상태", async ({ page }) => 
 });
 
 test("상담 신청이 카카오톡 채널에 새 창으로 연결된다", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("./");
   const link = page.getByRole("link", { name: "상담 신청" });
   await expect(link).toHaveAttribute(
     "href",
