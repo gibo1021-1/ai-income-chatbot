@@ -869,3 +869,21 @@ footer > span:last-child {
     width: 100%;
   }
 }
+
+.need-summary {
+  text-align: left;
+  padding: 14px 16px;
+  border-left: 3px solid #aabd92;
+  background: #f8faf4;
+  border-radius: 6px;
+  margin: 16px 0;
+}
+.need-summary > span {
+  color: #617556;
+  font-size: 10px;
+}
+.diagnosis-card .need-summary p {
+  color: #43583b;
+  margin: 7px 0 0;
+  font-size: 12px;
+}
