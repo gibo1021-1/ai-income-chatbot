@@ -89,7 +89,6 @@ export const courses = [
     label: "STARTER",
     step: "01",
     price: "19만 원",
-    provisional: true,
     description:
       "처음이어도 괜찮아요. AI 도구를 익히고 작은 콘텐츠와 상품으로 첫 수익화 실험을 시작해 보세요.",
     items: [
@@ -105,7 +104,6 @@ export const courses = [
     label: "BUILDER",
     step: "02",
     price: "79만 원",
-    provisional: true,
     description:
       "흩어진 경험과 콘텐츠를 하나의 브랜드로 연결해요. 상품과 고객 동선을 설계하며 지속 가능한 수익 구조를 만들어 보세요.",
     items: [
@@ -121,7 +119,6 @@ export const courses = [
     label: "AUTHOR",
     step: "03",
     price: "299만 원",
-    provisional: false,
     description:
       "쌓아 온 지식과 이야기를 책으로 정리해요. AI를 집필 파트너로 활용해 전문성을 담은 작가 브랜드를 준비합니다.",
     items: [

@@ -18,6 +18,7 @@ import {
   questions,
   BLOCKER_QUESTION_INDEX,
 } from "../lib/diagnosis";
+import ConsultationForm from "../components/ConsultationForm";
 import { freeResources } from "../lib/resources";
 const homeHref = `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/`;
 function ExternalLink({
@@ -189,14 +190,9 @@ export default function Home() {
                       </li>
                     ))}
                   </ul>
-                  <b>
-                    {course.price}{" "}
-                    {course.provisional && <small>임시 가격</small>}
-                  </b>
+                  <b>{course.price}</b>
                 </div>
-                <ExternalLink href={links.payments[type]} className="primary">
-                  추천 과정 신청하기
-                </ExternalLink>
+                <ConsultationForm type={type} />
                 <div className="result-actions">
                   <button onClick={() => move(0)}>
                     <ArrowLeft size={15} /> 답변 수정
@@ -330,12 +326,6 @@ export default function Home() {
         </section>
         {result && (
           <div className="notice">
-            {course.provisional && (
-              <>
-                안내된 가격은 임시 가격이며 변경될 수 있습니다.
-                <br />
-              </>
-            )}
             강의 상세 일정과 제공 범위, 외부 신청 페이지의 결제 조건은 신청 전
             확인해 주세요.
           </div>
