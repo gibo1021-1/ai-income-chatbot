@@ -86,7 +86,7 @@ export default function Home() {
         <section className="hero" aria-label="AI 수익화 무료 진단">
           <div className="hero-copy">
             <span className="eyebrow">
-              <span /> YOUR NEXT CHAPTER
+              <span /> 나에게 맞는 AI 시작
             </span>
             <h1>
               AI로 만드는 수익,
@@ -134,7 +134,7 @@ export default function Home() {
             {step === -1 ? (
               <>
                 <div className="card-top">
-                  <span className="pill">FREE DIAGNOSIS</span>
+                  <span className="pill">무료 수익화 진단</span>
                   <span className="small-muted">
                     01 — {String(questions.length).padStart(2, "0")}
                   </span>
@@ -166,7 +166,7 @@ export default function Home() {
             ) : result ? (
               <>
                 <div className="card-top">
-                  <span className="pill">YOUR NEXT STEP</span>
+                  <span className="pill">나에게 맞는 다음 단계</span>
                   <Sparkles size={20} />
                 </div>
                 <span className="result-label">나에게 추천하는 방향</span>
@@ -185,7 +185,7 @@ export default function Home() {
                 </div>
                 <p>{course.description}</p>
                 <div className="result-box">
-                  <span>추천 과정 · STEP {course.step}</span>
+                  <span>추천 과정 · {Number(course.step)}단계</span>
                   <strong>{course.action}</strong>
                   <ul
                     className="result-curriculum"
@@ -216,7 +216,7 @@ export default function Home() {
             ) : (
               <>
                 <div className="card-top">
-                  <span className="pill">MY DISCOVERY</span>
+                  <span className="pill">나를 알아보는 질문</span>
                   <span className="small-muted">
                     {String(step + 1).padStart(2, "0")} /{" "}
                     {String(questions.length).padStart(2, "0")}
@@ -232,7 +232,7 @@ export default function Home() {
                     }}
                   />
                 </div>
-                <span className="question-number">QUESTION 0{step + 1}</span>
+                <span className="question-number">질문 {step + 1}</span>
                 <h2 className="question-title">{questions[step].title}</h2>
                 <p className="question-hint">{questions[step].hint}</p>
                 <div
@@ -288,7 +288,7 @@ export default function Home() {
         </section>
         <section id="journey" className="journey">
           <div>
-            <span className="eyebrow">A PATH THAT FITS YOU</span>
+            <span className="eyebrow">나에게 맞는 속도로 시작하세요</span>
             <h2>
               출발점은 달라도,
               <br className="mobile-break" /> 가능성은 열려 있어요.
@@ -326,7 +326,7 @@ export default function Home() {
               aria-label={`총 ${freeResources.length}개 무료 자료`}
             >
               <strong>{String(freeResources.length).padStart(2, "0")}</strong>
-              <span>FREE RESOURCES</span>
+              <span>가지 무료 자료</span>
               <p>
                 입문 전자책 1개
                 <br />
