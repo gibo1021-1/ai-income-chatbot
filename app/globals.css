@@ -2,7 +2,7 @@
 :root {
   --ink: #20372e;
   --green: #285a43;
-  --muted: #727c75;
+  --muted: #4b5949;
   --paper: #fafbf7;
 }
 * {
@@ -17,7 +17,7 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: Arial, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  font-size: 14px;
+  font-size: 1.125rem;
   -webkit-font-smoothing: antialiased;
 }
 a {
@@ -63,7 +63,7 @@ footer {
 .brand {
   font-weight: 800;
   letter-spacing: -1px;
-  font-size: 24px;
+  font-size: 1.5rem;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -78,14 +78,14 @@ footer {
   place-items: center;
 }
 .brand-dot {
-  color: #91a578;
+  color: #495942;
   margin-left: -6px;
 }
 nav {
   display: flex;
   align-items: center;
   gap: 32px;
-  font-size: 13px;
+  font-size: 1rem;
   color: #566158;
 }
 .nav-consult {
@@ -104,13 +104,13 @@ nav {
   position: relative;
 }
 .eyebrow {
-  font-size: 10px;
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: 2px;
   display: flex;
   gap: 8px;
   align-items: center;
-  color: #698063;
+  color: #495942;
 }
 .eyebrow > span {
   height: 6px;
@@ -119,7 +119,7 @@ nav {
   border-radius: 50%;
 }
 h1 {
-  font-size: 43px;
+  font-size: 2.6875rem;
   line-height: 1.48;
   letter-spacing: -2.3px;
   font-weight: 700;
@@ -142,7 +142,7 @@ h1 em:after {
   border-radius: 50%;
 }
 .hero-description {
-  font-size: 14px;
+  font-size: 1.125rem;
   line-height: 1.95;
   color: var(--muted);
 }
@@ -151,7 +151,7 @@ h1 em:after {
   gap: 17px;
   margin: 29px 0;
   color: #5d6c60;
-  font-size: 12px;
+  font-size: 1rem;
 }
 .hero-facts span {
   display: flex;
@@ -162,20 +162,20 @@ h1 em:after {
   display: flex;
   gap: 10px;
   align-items: center;
-  font-size: 13px;
+  font-size: 1rem;
   font-weight: 700;
 }
 .hero-note {
   margin-top: 61px;
-  color: #899184;
-  font-size: 11px;
+  color: #495942;
+  font-size: 1rem;
   display: flex;
   gap: 12px;
   align-items: center;
 }
 .mini-stars {
-  color: #b5a176;
-  font-size: 14px;
+  color: #495942;
+  font-size: 1.125rem;
   letter-spacing: 2px;
 }
 .diagnosis-card {
@@ -196,7 +196,7 @@ h1 em:after {
   align-items: center;
 }
 .pill {
-  font-size: 9px;
+  font-size: 1rem;
   letter-spacing: 1.4px;
   background: #edf2e8;
   color: #58734b;
@@ -205,8 +205,8 @@ h1 em:after {
   font-weight: bold;
 }
 .small-muted {
-  font-size: 10px;
-  color: #99a292;
+  font-size: 1rem;
+  color: #495942;
   letter-spacing: 2px;
 }
 .orb {
@@ -242,20 +242,20 @@ h1 em:after {
   top: 24px;
 }
 .card-kicker {
-  font-size: 11px;
-  color: #7c8972;
+  font-size: 1rem;
+  color: #495942;
 }
 .diagnosis-card h2 {
-  font-size: 29px;
+  font-size: 1.8125rem;
   line-height: 1.4;
   letter-spacing: -1px;
   font-weight: 700;
   margin: 10px 0 12px;
 }
 .diagnosis-card p {
-  font-size: 12px;
+  font-size: 1rem;
   line-height: 1.9;
-  color: #7c8379;
+  color: #495942;
   margin: 0 0 23px;
 }
 .primary {
@@ -270,17 +270,17 @@ h1 em:after {
   justify-content: center;
   gap: 15px;
   font-weight: 600;
-  font-size: 13px;
+  font-size: 1rem;
   min-height: 50px;
 }
 .primary:hover {
   background: #1d4935;
 }
 .card-foot {
-  font-size: 9px;
+  font-size: 1rem;
   line-height: 1.7;
   display: block;
-  color: #949a90;
+  color: #495942;
   margin-top: 14px;
 }
 .journey {
@@ -291,15 +291,15 @@ h1 em:after {
   align-items: flex-end;
 }
 .journey h2 {
-  font-size: 24px;
+  font-size: 1.5rem;
   letter-spacing: -1px;
   margin: 12px 0 0;
   font-weight: 700;
 }
 .journey p {
-  font-size: 12px;
+  font-size: 1rem;
   line-height: 1.9;
-  color: #7c8379;
+  color: #495942;
   margin: 0;
 }
 .mobile-break {
@@ -337,42 +337,42 @@ h1 em:after {
   background: #edf2e8;
   display: grid;
   place-items: center;
-  color: #6c8660;
+  color: #495942;
 }
 .course-2 .course-icon {
   background: #ede6d8;
-  color: #96825a;
+  color: #495942;
 }
 .step {
-  font-size: 9px;
+  font-size: 1rem;
   letter-spacing: 1.5px;
-  color: #8c9886;
+  color: #495942;
 }
 .course-label {
-  font-size: 9px;
+  font-size: 1rem;
   letter-spacing: 1.6px;
-  color: #7b8e6d;
+  color: #495942;
   display: block;
   margin-top: 22px;
 }
 .course h3 {
-  font-size: 19px;
+  font-size: 1.25rem;
   letter-spacing: -0.7px;
   font-weight: 700;
   margin: 8px 0 13px;
 }
 .course p {
-  font-size: 11px;
+  font-size: 1rem;
   line-height: 1.9;
-  color: #7a8175;
+  color: #495942;
   min-height: 64px;
 }
 .course ul {
   list-style: none;
   padding: 0;
   margin: 21px 0;
-  color: #626f5b;
-  font-size: 11px;
+  color: #495942;
+  font-size: 1rem;
   line-height: 2;
 }
 .course li {
@@ -390,19 +390,19 @@ h1 em:after {
   justify-content: space-between;
 }
 .course-bottom strong {
-  font-size: 20px;
+  font-size: 1.25rem;
   letter-spacing: -1px;
 }
 .price-tag {
   display: block;
-  font-size: 9px;
-  color: #909581;
+  font-size: 1rem;
+  color: #495942;
   margin-top: 3px;
 }
 .course-link {
   display: flex;
   gap: 4px;
-  font-size: 10px;
+  font-size: 1rem;
 }
 .unavailable {
   opacity: 0.65;
@@ -418,17 +418,17 @@ h1 em:after {
   align-items: center;
 }
 .resource-icon {
-  color: #778967;
+  color: #495942;
 }
 .resource h2 {
-  font-size: 18px;
+  font-size: 1.25rem;
   font-weight: 700;
   letter-spacing: -0.5px;
   margin: 8px 0;
 }
 .resource p {
-  font-size: 11px;
-  color: #818878;
+  font-size: 1rem;
+  color: #495942;
   margin: 0;
 }
 .secondary {
@@ -440,13 +440,13 @@ h1 em:after {
   padding: 12px 17px;
   border: 1px solid #dde2d3;
   border-radius: 6px;
-  font-size: 11px;
+  font-size: 1rem;
   white-space: nowrap;
 }
 .notice {
   padding: 0 32px;
-  color: #959b8e;
-  font-size: 10px;
+  color: #495942;
+  font-size: 1rem;
   line-height: 1.9;
   margin-bottom: 42px;
 }
@@ -456,11 +456,11 @@ footer {
   display: flex;
   align-items: center;
   gap: 26px;
-  color: #93998d;
-  font-size: 10px;
+  color: #495942;
+  font-size: 1rem;
 }
 footer .brand {
-  font-size: 18px;
+  font-size: 1.25rem;
   color: var(--ink);
 }
 footer > span:last-child {
@@ -480,12 +480,12 @@ footer > span:last-child {
   transition: width 0.2s;
 }
 .question-number {
-  font-size: 10px;
+  font-size: 1rem;
   letter-spacing: 1.8px;
-  color: #7f946e;
+  color: #495942;
 }
 .diagnosis-card .question-title {
-  font-size: 24px;
+  font-size: 1.5rem;
   line-height: 1.5;
   margin-top: 16px;
 }
@@ -504,9 +504,9 @@ footer > span:last-child {
   padding: 14px 12px;
   border: 1px solid #e1e6db;
   border-radius: 8px;
-  color: #626e5c;
+  color: #495942;
   background: white;
-  font-size: 11px;
+  font-size: 1rem;
   line-height: 1.6;
   min-height: 58px;
 }
@@ -514,7 +514,7 @@ footer > span:last-child {
   background: #f1f4ed;
   border-radius: 5px;
   padding: 3px 6px;
-  font-size: 10px;
+  font-size: 1rem;
 }
 .options button.selected {
   border-color: #62805a;
@@ -539,25 +539,25 @@ footer > span:last-child {
 .result-actions button {
   border: 0;
   background: none;
-  color: #7e8975;
+  color: #495942;
   display: flex;
   align-items: center;
   gap: 5px;
-  font-size: 11px;
+  font-size: 1rem;
   white-space: nowrap;
 }
 .restart {
   margin: 20px auto 0;
-  font-size: 10px;
+  font-size: 1rem;
 }
 .result-label {
   display: block;
   margin-top: 30px;
-  font-size: 11px;
-  color: #879b73;
+  font-size: 1rem;
+  color: #495942;
 }
 .diagnosis-card .result-title {
-  font-size: 25px;
+  font-size: 1.5625rem;
   margin: 15px 0;
 }
 .result-box {
@@ -568,21 +568,21 @@ footer > span:last-child {
   margin: 20px 0;
 }
 .result-box > span {
-  font-size: 9px;
-  color: #839273;
+  font-size: 1rem;
+  color: #495942;
 }
 .result-box strong {
-  font-size: 13px;
+  font-size: 1rem;
   display: block;
   margin: 9px 0 13px;
 }
 .result-box b {
-  font-size: 22px;
+  font-size: 1.375rem;
 }
 .result-box small {
-  font-size: 10px;
+  font-size: 1rem;
   font-weight: 400;
-  color: #7f8975;
+  color: #495942;
 }
 .result-actions {
   display: flex;
@@ -606,7 +606,7 @@ footer > span:last-child {
     padding: 54px 28px;
   }
   h1 {
-    font-size: 35px;
+    font-size: 2.1875rem;
   }
   .hero-facts {
     gap: 10px;
@@ -621,10 +621,10 @@ footer > span:last-child {
     padding: 20px;
   }
   .course h3 {
-    font-size: 16px;
+    font-size: 1.125rem;
   }
   .journey h2 {
-    font-size: 21px;
+    font-size: 1.3125rem;
   }
 }
 @media (max-width: 720px) {
@@ -633,7 +633,7 @@ footer > span:last-child {
     margin: 0 22px;
   }
   .brand {
-    font-size: 21px;
+    font-size: 1.3125rem;
   }
   nav {
     gap: 14px;
@@ -643,7 +643,7 @@ footer > span:last-child {
     display: none;
   }
   .nav-consult {
-    font-size: 11px;
+    font-size: 1rem;
     padding: 8px 10px;
   }
   .hero {
@@ -656,25 +656,25 @@ footer > span:last-child {
   }
   .eyebrow {
     justify-content: center;
-    font-size: 9px;
+    font-size: 1rem;
   }
   h1 {
-    font-size: 32px;
+    font-size: 2rem;
     letter-spacing: -1.7px;
     margin-top: 19px;
   }
   .hero-description {
-    font-size: 12px;
+    font-size: 1rem;
   }
   .hero-facts {
     justify-content: center;
     margin: 23px 0;
-    font-size: 11px;
+    font-size: 1rem;
     gap: 14px;
   }
   .text-link {
     justify-content: center;
-    font-size: 12px;
+    font-size: 1rem;
   }
   .hero-note {
     display: none;
@@ -692,12 +692,12 @@ footer > span:last-child {
     padding: 32px 22px 24px;
   }
   .journey h2 {
-    font-size: 23px;
+    font-size: 1.4375rem;
     line-height: 1.6;
   }
   .journey p {
     margin-top: 14px;
-    font-size: 11px;
+    font-size: 1rem;
   }
   .mobile-break {
     display: block;
@@ -711,14 +711,14 @@ footer > span:last-child {
     padding: 24px;
   }
   .course h3 {
-    font-size: 21px;
+    font-size: 1.3125rem;
   }
   .course p {
     min-height: 0;
-    font-size: 12px;
+    font-size: 1rem;
   }
   .course ul {
-    font-size: 12px;
+    font-size: 1rem;
   }
   .course-label {
     margin-top: 18px;
@@ -740,7 +740,7 @@ footer > span:last-child {
     letter-spacing: 1px;
   }
   .resource h2 {
-    font-size: 17px;
+    font-size: 1.25rem;
   }
   .resource p {
     line-height: 1.8;
@@ -752,7 +752,7 @@ footer > span:last-child {
   }
   .notice {
     padding: 0 22px;
-    font-size: 9px;
+    font-size: 1rem;
     margin-bottom: 28px;
   }
   footer {
@@ -766,10 +766,10 @@ footer > span:last-child {
     width: 100%;
   }
   .diagnosis-card .question-title {
-    font-size: 22px;
+    font-size: 1.375rem;
   }
   .options button {
-    font-size: 12px;
+    font-size: 1rem;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -785,8 +785,8 @@ footer > span:last-child {
   list-style: none;
   padding: 0;
   margin: 0 0 16px;
-  color: #626f5b;
-  font-size: 11px;
+  color: #495942;
+  font-size: 1rem;
   line-height: 1.8;
 }
 .result-curriculum li {
@@ -810,7 +810,7 @@ footer > span:last-child {
   border-radius: 9px;
   background: #edf3e5;
   color: #31563a;
-  font-size: 12px;
+  font-size: 1rem;
   line-height: 1.6;
 }
 .hero-resource-link:hover {
@@ -840,20 +840,20 @@ footer > span:last-child {
   background: #dce8cc;
   border-radius: 20px;
   padding: 7px 13px;
-  font-size: 12px;
+  font-size: 1rem;
   font-weight: 700;
   color: #365834;
 }
 .resource-showcase h2 {
-  font-size: 30px;
+  font-size: 1.875rem;
   font-weight: 700;
   letter-spacing: -1px;
   line-height: 1.5;
   margin: 17px 0 12px;
 }
 .resource-showcase-header > div > p {
-  color: #627158;
-  font-size: 13px;
+  color: #495942;
+  font-size: 1rem;
   line-height: 1.9;
   margin: 0;
 }
@@ -864,20 +864,20 @@ footer > span:last-child {
   color: #52723c;
 }
 .resource-count > strong {
-  font-size: 90px;
+  font-size: 5.625rem;
   font-weight: 700;
   line-height: 1;
   letter-spacing: -6px;
   display: block;
 }
 .resource-count > span {
-  font-size: 9px;
+  font-size: 1rem;
   letter-spacing: 1.6px;
   display: block;
   margin: 7px 0 13px;
 }
 .resource-showcase .resource-count p {
-  font-size: 11px;
+  font-size: 1rem;
   line-height: 1.8;
 }
 .resource-links {
@@ -907,23 +907,23 @@ footer > span:last-child {
   transform: translateY(-2px);
 }
 .resource-card-label {
-  font-size: 10px;
+  font-size: 1rem;
   letter-spacing: 0.6px;
   font-weight: 700;
-  color: #648348;
+  color: #495942;
   margin-bottom: 11px;
 }
 .resource-card strong {
-  font-size: 16px;
+  font-size: 1.125rem;
   line-height: 1.65;
   letter-spacing: -0.3px;
   overflow-wrap: anywhere;
 }
 .resource-description {
   display: block;
-  font-size: 12px;
+  font-size: 1rem;
   line-height: 1.8;
-  color: #6c7863;
+  color: #495942;
   margin: 10px 0 20px;
 }
 .resource-card-action {
@@ -931,7 +931,7 @@ footer > span:last-child {
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  font-size: 12px;
+  font-size: 1rem;
   font-weight: 700;
   color: #426633;
   margin-top: auto;
@@ -953,7 +953,7 @@ footer > span:last-child {
   color: #c1d9a9;
 }
 .featured-resource .resource-card strong {
-  font-size: 23px;
+  font-size: 1.4375rem;
 }
 .featured-resource .resource-description {
   color: #d3e1c8;
@@ -964,9 +964,9 @@ footer > span:last-child {
   border-top-color: #ffffff26;
 }
 .resource-showcase > .resource-link-note {
-  font-size: 11px;
+  font-size: 1rem;
   line-height: 1.8;
-  color: #617254;
+  color: #495942;
   margin: 15px 0 0;
 }
 @media (max-width: 1000px) {
@@ -976,7 +976,7 @@ footer > span:last-child {
 }
 @media (max-width: 720px) {
   .hero-resource-link {
-    font-size: 11px;
+    font-size: 1rem;
     padding: 12px;
     gap: 7px;
     text-align: left;
@@ -991,29 +991,29 @@ footer > span:last-child {
     align-items: flex-start;
   }
   .resource-showcase h2 {
-    font-size: 23px;
+    font-size: 1.4375rem;
     line-height: 1.6;
     margin-top: 15px;
   }
   .resource-showcase-header > div > p {
-    font-size: 11px;
+    font-size: 1rem;
   }
   .resource-count {
     padding: 4px 0 0;
   }
   .resource-count > strong {
-    font-size: 54px;
+    font-size: 3.375rem;
     letter-spacing: -3px;
   }
   .resource-count > span {
-    font-size: 6px;
+    font-size: 1rem;
     letter-spacing: 0.6px;
   }
   .resource-showcase .resource-count p {
-    font-size: 9px;
+    font-size: 1rem;
   }
   .resource-badge {
-    font-size: 10px;
+    font-size: 1rem;
     padding: 6px 10px;
   }
   .resource-links {
@@ -1025,13 +1025,13 @@ footer > span:last-child {
     padding: 20px;
   }
   .resource-card strong {
-    font-size: 16px;
+    font-size: 1.125rem;
   }
   .featured-resource .resource-card strong {
-    font-size: 21px;
+    font-size: 1.3125rem;
   }
   .resource-showcase > .resource-link-note {
-    font-size: 10px;
+    font-size: 1rem;
   }
 }
 
@@ -1044,13 +1044,13 @@ footer > span:last-child {
   margin: 16px 0;
 }
 .need-summary > span {
-  color: #617556;
-  font-size: 10px;
+  color: #495942;
+  font-size: 1rem;
 }
 .diagnosis-card .need-summary p {
   color: #43583b;
   margin: 7px 0 0;
-  font-size: 12px;
+  font-size: 1rem;
 }
 
 .consultation-form {
@@ -1061,19 +1061,19 @@ footer > span:last-child {
 }
 .consultation-form h3,
 .consultation-success h3 {
-  font-size: 17px;
+  font-size: 1.25rem;
   font-weight: 700;
   line-height: 1.6;
   margin: 0 0 10px;
 }
 .consultation-form form > label {
   display: block;
-  font-size: 12px;
+  font-size: 1rem;
   margin: 15px 0 7px;
   color: #405539;
 }
 .consultation-form label > span {
-  font-size: 11px;
+  font-size: 1rem;
 }
 .consultation-form form > input:not([type="hidden"]) {
   width: 100%;
@@ -1087,7 +1087,7 @@ footer > span:last-child {
 }
 .consultation-form input:disabled {
   background: #f4f5f0;
-  color: #7a8373;
+  color: #495942;
 }
 .consultation-form input:focus-visible {
   outline: 2px solid #6c875b;
@@ -1095,15 +1095,15 @@ footer > span:last-child {
 }
 .privacy-details {
   padding: 13px 0;
-  font-size: 11px;
-  color: #617157;
+  font-size: 1rem;
+  color: #495942;
 }
 .privacy-details summary {
   cursor: pointer;
 }
 .diagnosis-card .privacy-details p {
   white-space: pre-line;
-  font-size: 11px;
+  font-size: 1rem;
   margin: 10px 0 0;
 }
 .consultation-form form > .consent-label {
@@ -1124,12 +1124,12 @@ footer > span:last-child {
   background: #f3f5ed;
   padding: 12px;
   border-radius: 7px;
-  font-size: 11px;
-  color: #627057;
+  font-size: 1rem;
+  color: #495942;
 }
 .diagnosis-card .form-error {
   color: #a43d2b;
-  font-size: 12px;
+  font-size: 1rem;
 }
 .response-frame,
 .lead-honeypot {
@@ -1140,7 +1140,7 @@ footer > span:last-child {
   align-items: center;
   justify-content: center;
   gap: 5px;
-  font-size: 11px;
+  font-size: 1rem;
   color: #527146;
   margin-top: 14px;
 }
@@ -1152,7 +1152,7 @@ footer > span:last-child {
   margin: 20px 0;
 }
 .consultation-success > span {
-  font-size: 10px;
+  font-size: 1rem;
   overflow-wrap: anywhere;
 }
 
@@ -1163,7 +1163,7 @@ footer > span:last-child {
 }
 .newsletter-fields > label:not(.consent-label) {
   display: block;
-  font-size: 12px;
+  font-size: 1rem;
   margin: 10px 0 7px;
 }
 .newsletter-fields > input {
@@ -1178,11 +1178,11 @@ footer > span:last-child {
   display: flex;
   align-items: flex-start;
   gap: 8px;
-  font-size: 11px;
+  font-size: 1rem;
   line-height: 1.7;
 }
 .diagnosis-card .newsletter-note {
-  font-size: 10px;
+  font-size: 1rem;
   margin: 8px 0 0;
   line-height: 1.7;
 }
@@ -1204,15 +1204,365 @@ footer > span:last-child {
     border-top: 1px solid #d4dfc5;
   }
   .resource-count > strong {
-    font-size: 44px;
+    font-size: 2.75rem;
   }
   .resource-count > span {
-    font-size: 8px;
+    font-size: 1rem;
     letter-spacing: 1px;
     margin: 0;
   }
   .resource-showcase .resource-count p {
     margin-left: auto;
-    font-size: 10px;
+    font-size: 1rem;
+  }
+}
+
+/* Readable text and generous controls at all screen sizes. */
+body {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  line-height: 1.8;
+}
+h1 {
+  letter-spacing: -0.025em;
+}
+h1 em {
+  white-space: normal;
+}
+.hero-description,
+.diagnosis-card p {
+  font-size: 1.125rem;
+  color: #465342;
+  line-height: 1.85;
+}
+.hero-description {
+  max-width: 40rem;
+}
+.hero-facts {
+  flex-wrap: wrap;
+  line-height: 1.8;
+}
+.hero-facts svg,
+.primary svg,
+.hero-resource-link > svg {
+  flex-shrink: 0;
+}
+.eyebrow,
+.pill,
+.small-muted,
+.question-number {
+  letter-spacing: 0.03em;
+  line-height: 1.7;
+}
+.card-top {
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.card-foot,
+.notice,
+.resource-showcase > .resource-link-note,
+.diagnosis-card .newsletter-note {
+  font-size: 1rem;
+  color: #465342;
+  line-height: 1.85;
+}
+.primary {
+  font-size: 1.125rem;
+  min-height: 58px;
+  line-height: 1.65;
+  padding: 16px 20px;
+}
+button:disabled {
+  opacity: 1;
+  background: #e3e7df;
+  color: #545e4e;
+  border: 1px solid #c9d0c3;
+}
+.unavailable {
+  opacity: 1;
+}
+.options {
+  gap: 14px;
+}
+.options button {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  min-height: 76px;
+  padding: 18px 16px;
+  border: 2px solid #aab9a0;
+  color: #293d27;
+  overflow-wrap: anywhere;
+}
+.options button > span {
+  font-size: 1rem;
+  min-width: 32px;
+  min-height: 32px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  font-weight: 700;
+}
+.options button.selected {
+  border-color: #285a43;
+  background: #e7f0de;
+  color: #203c23;
+}
+.back,
+.restart,
+.result-actions button,
+.text-link,
+.kakao-alternative,
+nav a {
+  min-height: 48px;
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+.back,
+.restart,
+.result-actions button {
+  white-space: normal;
+}
+.question-actions {
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.question-actions .primary {
+  min-width: 0;
+  flex-basis: 65%;
+}
+.result-actions {
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.hero-resource-link {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  max-width: 100%;
+}
+.hero-resource-link > span {
+  min-width: 0;
+}
+.result-curriculum {
+  font-size: 1.125rem;
+  line-height: 1.85;
+}
+.result-curriculum li {
+  align-items: flex-start;
+  gap: 9px;
+  margin-bottom: 10px;
+}
+.result-curriculum svg {
+  margin-top: 9px;
+}
+.result-box strong {
+  font-size: 1.25rem;
+  line-height: 1.7;
+}
+.result-box b {
+  font-size: 1.75rem;
+}
+.diagnosis-card .need-summary p {
+  font-size: 1.125rem;
+  line-height: 1.8;
+}
+.resource-showcase-header > div > p,
+.resource-description {
+  font-size: 1.125rem;
+  line-height: 1.85;
+  color: #465342;
+}
+.resource-card strong {
+  font-size: 1.25rem;
+  line-height: 1.7;
+}
+.resource-card-action {
+  font-size: 1.125rem;
+  min-height: 48px;
+  line-height: 1.7;
+}
+.resource-card-label,
+.resource-badge {
+  font-size: 1rem;
+  line-height: 1.7;
+}
+.featured-resource .resource-description {
+  color: #f1f6eb;
+}
+.resource-count {
+  min-width: 0;
+  flex-wrap: wrap;
+}
+.consultation-form form > label,
+.newsletter-fields > label:not(.consent-label) {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  font-weight: 600;
+}
+.consultation-form form > input:not([type="hidden"]),
+.newsletter-fields > input {
+  min-height: 56px;
+  font-size: 1.125rem;
+  padding: 13px 14px;
+  border-color: #91a084;
+}
+.consultation-form input::placeholder {
+  color: #596650;
+  opacity: 1;
+}
+.privacy-details summary {
+  font-size: 1.125rem;
+  min-height: 48px;
+  line-height: 1.7;
+  padding: 8px 0;
+}
+.diagnosis-card .privacy-details p {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: #34472f;
+  overflow-wrap: anywhere;
+}
+.consultation-form form > .consent-label,
+.newsletter-fields .consent-label {
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid #cad5bf;
+  border-radius: 8px;
+  background: #f6f8f1;
+  min-height: 56px;
+}
+.consultation-form label > span,
+.newsletter-fields .consent-label {
+  font-size: 1rem;
+  line-height: 1.85;
+}
+.consent-label input {
+  width: 24px;
+  height: 24px;
+  margin-top: 3px;
+}
+.diagnosis-card .form-error {
+  font-size: 1.125rem;
+  color: #922f22;
+  line-height: 1.8;
+}
+.consultation-success > span {
+  font-size: 1rem;
+}
+footer {
+  font-size: 1rem;
+  line-height: 1.8;
+  flex-wrap: wrap;
+}
+button:focus-visible,
+a:focus-visible,
+summary:focus-visible,
+input:focus-visible {
+  outline: 3px solid #285a43;
+  outline-offset: 4px;
+}
+.featured-resource a:focus-visible {
+  outline-color: #b38b27;
+}
+@media (max-width: 1000px) and (min-width: 721px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+  .diagnosis-card {
+    width: 100%;
+    max-width: 680px;
+    margin: auto;
+  }
+}
+@media (max-width: 720px) {
+  .header {
+    height: auto;
+    min-height: 90px;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 14px 0;
+  }
+  .hero {
+    padding: 32px 18px;
+  }
+  h1 {
+    font-size: 2rem;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+  }
+  .hero-description,
+  .diagnosis-card p {
+    font-size: 1.125rem;
+  }
+  .hero-facts {
+    font-size: 1rem;
+    gap: 10px 15px;
+  }
+  .diagnosis-card {
+    padding: 24px 18px;
+    min-width: 0;
+  }
+  .diagnosis-card .question-title {
+    font-size: 1.625rem;
+    line-height: 1.65;
+  }
+  .diagnosis-card .result-title {
+    font-size: 1.625rem;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+  }
+  .hero-resource-link {
+    display: flex;
+    text-align: left;
+    font-size: 1rem;
+    gap: 9px;
+    padding: 14px;
+  }
+  .resource-showcase {
+    margin: 16px 18px 28px;
+    padding: 24px 18px;
+  }
+  .resource-showcase h2 {
+    font-size: 1.625rem;
+  }
+  .resource-count {
+    gap: 12px;
+  }
+  .resource-count > span {
+    font-size: 1rem;
+  }
+  .resource-showcase .resource-count p {
+    font-size: 1rem;
+  }
+  .resource-links {
+    grid-template-columns: 1fr;
+  }
+  .resource-card {
+    padding: 20px 18px;
+  }
+  .resource-card strong {
+    font-size: 1.25rem;
+  }
+  .featured-resource .resource-card strong {
+    font-size: 1.5rem;
+  }
+  .journey p {
+    font-size: 1.125rem;
+  }
+  .result-box {
+    padding: 18px 14px;
+  }
+  .options button {
+    padding: 16px 12px;
+    gap: 10px;
+  }
+  .nav-consult {
+    font-size: 1rem;
+  }
+  .resource-showcase,
+  .hero-copy,
+  .resource-card,
+  .hero-copy > * {
+    min-width: 0;
   }
 }
