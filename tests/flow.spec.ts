@@ -89,8 +89,9 @@ test("무료 자료 목록과 모바일 가로 넘침", async ({ page }) => {
     ),
   ).toBe(true);
   const ebook = page.getByRole("link", { name: /AI 활용법 완전초보 전자책/ });
-  await expect(ebook).not.toBeVisible();
-  await page.locator(".resource-details summary").click();
+  await page.getByRole("link", { name: /전자책.*실전 자료/ }).click();
+  await expect(page.locator("#free-resources")).toBeInViewport();
+  await expect(page.locator(".resource-badge")).toHaveText("무료 자료 7종");
   await expect(ebook).toBeVisible();
   await expect(page.locator(".resource-links > li")).toHaveCount(7);
   for (const resource of freeResources) {
@@ -107,8 +108,7 @@ test("무료 자료 목록과 모바일 가로 넘침", async ({ page }) => {
   await expect(ebook).toHaveAttribute("href", "https://url.kr/he1eak");
   await expect(ebook).toHaveAttribute("target", "_blank");
   await expect(ebook).toHaveAttribute("rel", "noopener noreferrer");
-  await page.locator(".resource-details summary").click();
-  await expect(ebook).not.toBeVisible();
+  await expect(page.locator(".resource-showcase details")).toHaveCount(0);
   await expect(page.locator(".result-box")).toHaveCount(0);
 });
 

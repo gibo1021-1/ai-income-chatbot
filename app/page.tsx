@@ -112,6 +112,14 @@ export default function Home() {
             <a href="#diagnosis" className="text-link">
               내 가능성 발견하기 <ArrowRight size={17} />
             </a>
+            <a href="#free-resources" className="hero-resource-link">
+              <Download size={17} />
+              <span>
+                전자책 + 실전 자료{" "}
+                <strong>{freeResources.length}종 무료로 보기</strong>
+              </span>
+              <ArrowRight size={16} />
+            </a>
             <div className="hero-note">
               <span className="mini-stars">✦ ✦ ✦</span> 누구에게나, 자신만의
               시작점이 있으니까요.
@@ -292,37 +300,72 @@ export default function Home() {
             지금 나에게 필요한 한 걸음을 함께 찾아요.
           </p>
         </section>
-        <section className="resource">
-          <div className="resource-icon">
-            <Download size={25} />
+        <section
+          id="free-resources"
+          className="resource-showcase"
+          aria-labelledby="free-resources-title"
+        >
+          <div className="resource-showcase-header">
+            <div>
+              <span className="resource-badge">
+                <Download size={15} /> 무료 자료 {freeResources.length}종
+              </span>
+              <h2 id="free-resources-title">
+                AI 시작이 막막할 때,
+                <br />
+                무료 자료부터 만나보세요.
+              </h2>
+              <p>
+                AI 입문 전자책부터 인스타·릴스·블로그 실전 자료까지.
+                <br />
+                지금 필요한 자료를 골라 바로 열어보세요.
+              </p>
+            </div>
+            <div
+              className="resource-count"
+              aria-label={`총 ${freeResources.length}개 무료 자료`}
+            >
+              <strong>{String(freeResources.length).padStart(2, "0")}</strong>
+              <span>FREE RESOURCES</span>
+              <p>
+                입문 전자책 1개
+                <br />
+                실전 자료 {freeResources.length - 1}개
+              </p>
+            </div>
           </div>
-          <div>
-            <span className="eyebrow">A LITTLE HELP TO START</span>
-            <h2>첫걸음이 가벼워지는 무료 자료</h2>
-            <p>AI 수익화 시작 가이드와 함께 아이디어를 구체화해 보세요.</p>
-          </div>
-          <details className="resource-details">
-            <summary className="secondary">
-              무료 자료 보기 <ArrowRight size={16} />
-            </summary>
-            <ul className="resource-links" aria-label="무료 자료 링크 목록">
-              {freeResources.map((resource) => (
-                <li key={resource.url}>
-                  <ExternalLink href={resource.url} className="resource-card">
-                    <span>
-                      <strong>{resource.title}</strong>
-                      <span className="resource-description">
-                        {resource.description}
-                      </span>
-                    </span>
-                  </ExternalLink>
-                </li>
-              ))}
-            </ul>
-            <p className="resource-link-note">
-              자료는 외부 페이지에서 새 창으로 열립니다.
-            </p>
-          </details>
+          <ul className="resource-links" aria-label="무료 자료 링크 목록">
+            {freeResources.map((resource, index) => (
+              <li
+                key={resource.url}
+                className={index === 0 ? "featured-resource" : ""}
+              >
+                <a
+                  href={resource.url}
+                  className="resource-card"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className="resource-card-label">
+                    {index === 0
+                      ? "AI 입문 전자책"
+                      : `실전 자료 ${String(index).padStart(2, "0")}`}
+                  </span>
+                  <strong>{resource.title}</strong>
+                  <span className="resource-description">
+                    {resource.description}
+                  </span>
+                  <span className="resource-card-action">
+                    무료로 자료 열기 <ArrowUpRight size={17} />
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+          <p className="resource-link-note">
+            진단 전에도 자유롭게 이용할 수 있어요. 자료는 외부 페이지에서 새
+            창으로 열립니다.
+          </p>
         </section>
         {result && (
           <div className="notice">

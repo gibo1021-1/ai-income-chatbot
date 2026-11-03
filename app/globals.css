@@ -799,74 +799,239 @@ footer > span:last-child {
   flex-shrink: 0;
 }
 
-.resource {
-  flex-wrap: wrap;
+/* Free resource library */
+.hero-resource-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 22px;
+  padding: 13px 16px;
+  border: 1px solid #cbd9bb;
+  border-radius: 9px;
+  background: #edf3e5;
+  color: #31563a;
+  font-size: 12px;
+  line-height: 1.6;
 }
-.resource-details {
-  width: 100%;
+.hero-resource-link:hover {
+  background: #e1ecd4;
 }
-.resource-details summary {
-  cursor: pointer;
-  margin-left: 0;
-  width: fit-content;
-  list-style: none;
+.hero-resource-link strong {
+  font-weight: 700;
 }
-.resource-details summary::-webkit-details-marker {
-  display: none;
+.resource-showcase {
+  margin: 20px 32px 40px;
+  padding: 36px;
+  background: #edf2e4;
+  border: 1px solid #d7e2c8;
+  border-radius: 20px;
+  scroll-margin-top: 24px;
 }
-.resource-details summary:focus-visible {
-  outline: 3px solid #b59452;
-  outline-offset: 5px;
+.resource-showcase-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
 }
-.resource-details[open] summary svg {
-  transform: rotate(90deg);
+.resource-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #dce8cc;
+  border-radius: 20px;
+  padding: 7px 13px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #365834;
+}
+.resource-showcase h2 {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  line-height: 1.5;
+  margin: 17px 0 12px;
+}
+.resource-showcase-header > div > p {
+  color: #627158;
+  font-size: 13px;
+  line-height: 1.9;
+  margin: 0;
+}
+.resource-count {
+  flex-shrink: 0;
+  padding: 0 22px;
+  text-align: center;
+  color: #52723c;
+}
+.resource-count > strong {
+  font-size: 90px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -6px;
+  display: block;
+}
+.resource-count > span {
+  font-size: 9px;
+  letter-spacing: 1.6px;
+  display: block;
+  margin: 7px 0 13px;
+}
+.resource-showcase .resource-count p {
+  font-size: 11px;
+  line-height: 1.8;
 }
 .resource-links {
   list-style: none;
   padding: 0;
-  margin: 20px 0 10px;
+  margin: 28px 0 14px;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+.resource-links > li {
+  min-width: 0;
 }
 .resource-card {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 20px;
+  flex-direction: column;
+  height: 100%;
+  padding: 22px;
   background: #fff;
-  border: 1px solid #d9e1d1;
-  border-radius: 9px;
+  border: 1px solid #dbe4d0;
+  border-radius: 12px;
+  color: #273e2b;
 }
 .resource-card:hover {
-  background: #f8faf4;
+  background: #f8fcf3;
+  border-color: #a7bd8d;
+  transform: translateY(-2px);
+}
+.resource-card-label {
+  font-size: 10px;
+  letter-spacing: 0.6px;
+  font-weight: 700;
+  color: #648348;
+  margin-bottom: 11px;
 }
 .resource-card strong {
-  font-size: 14px;
-  line-height: 1.6;
+  font-size: 16px;
+  line-height: 1.65;
+  letter-spacing: -0.3px;
+  overflow-wrap: anywhere;
 }
 .resource-description {
   display: block;
+  font-size: 12px;
+  line-height: 1.8;
+  color: #6c7863;
+  margin: 10px 0 20px;
+}
+.resource-card-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #426633;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid #edf1e6;
+}
+.featured-resource {
+  grid-column: 1/-1;
+}
+.featured-resource .resource-card {
+  background: #285a43;
+  color: #fff;
+  position: relative;
+}
+.featured-resource .resource-card:hover {
+  background: #214d39;
+}
+.featured-resource .resource-card-label {
+  color: #c1d9a9;
+}
+.featured-resource .resource-card strong {
+  font-size: 23px;
+}
+.featured-resource .resource-description {
+  color: #d3e1c8;
+  margin-bottom: 16px;
+}
+.featured-resource .resource-card-action {
+  color: #e3efd8;
+  border-top-color: #ffffff26;
+}
+.resource-showcase > .resource-link-note {
   font-size: 11px;
   line-height: 1.8;
-  color: #697662;
-  margin-top: 6px;
+  color: #617254;
+  margin: 15px 0 0;
 }
-.resource-card > svg {
-  flex-shrink: 0;
-}
-.resource .resource-link-note {
-  font-size: 10px;
-  color: #697662;
-  line-height: 1.7;
+@media (max-width: 1000px) {
+  .resource-links {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 @media (max-width: 720px) {
+  .hero-resource-link {
+    font-size: 11px;
+    padding: 12px;
+    gap: 7px;
+    text-align: left;
+  }
+  .resource-showcase {
+    margin: 18px 22px 28px;
+    padding: 23px 18px;
+    border-radius: 15px;
+  }
+  .resource-showcase-header {
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .resource-showcase h2 {
+    font-size: 23px;
+    line-height: 1.6;
+    margin-top: 15px;
+  }
+  .resource-showcase-header > div > p {
+    font-size: 11px;
+  }
+  .resource-count {
+    padding: 4px 0 0;
+  }
+  .resource-count > strong {
+    font-size: 54px;
+    letter-spacing: -3px;
+  }
+  .resource-count > span {
+    font-size: 6px;
+    letter-spacing: 0.6px;
+  }
+  .resource-showcase .resource-count p {
+    font-size: 9px;
+  }
+  .resource-badge {
+    font-size: 10px;
+    padding: 6px 10px;
+  }
   .resource-links {
     grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 22px;
   }
-  .resource-details summary {
-    width: 100%;
+  .resource-card {
+    padding: 20px;
+  }
+  .resource-card strong {
+    font-size: 16px;
+  }
+  .featured-resource .resource-card strong {
+    font-size: 21px;
+  }
+  .resource-showcase > .resource-link-note {
+    font-size: 10px;
   }
 }
 
@@ -1020,4 +1185,34 @@ footer > span:last-child {
   font-size: 10px;
   margin: 8px 0 0;
   line-height: 1.7;
+}
+.resource-showcase h2,
+.resource-card strong {
+  word-break: keep-all;
+}
+@media (max-width: 720px) {
+  .resource-showcase-header {
+    display: block;
+  }
+  .resource-count {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-align: left;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid #d4dfc5;
+  }
+  .resource-count > strong {
+    font-size: 44px;
+  }
+  .resource-count > span {
+    font-size: 8px;
+    letter-spacing: 1px;
+    margin: 0;
+  }
+  .resource-showcase .resource-count p {
+    margin-left: auto;
+    font-size: 10px;
+  }
 }
